@@ -4,24 +4,21 @@
       <h3>{{title}}</h3>
     </div>
     <div class="link-box">
-      <el-button type="info" size="small" plain v-for="(urlitem,path) in urlobj" :key="path" @click="routerlinkto(urlitem.path)">{{urlitem.name}}</el-button>
+      <el-button type="info" size="small" plain v-for="(url_item,path) in url_obj_s" :key="path" @click="router_link_to(url_item.path)">{{url_item.name}}</el-button>
     </div>
-    <router-view/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'RouteLink',
-  props:["title","urlobj"],
+  props:["title","url_obj_s"],
   data () {
-    return {
-      routelink: null,
-    }
+    return {}
   },
   methods:{
-    routerlinkto(e){
-      this.$router.push({path:e});
+    router_link_to(path){
+      this.$emit("click_route_link",path);
     }
   }
 }

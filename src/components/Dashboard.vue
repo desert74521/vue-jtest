@@ -2,8 +2,8 @@
   <div class="heroes-box">
       <div class="title">{{title}}</div>
       <el-row>
-        <el-col :span="6"  v-for="(hero,id) in listCmputed" :key="id">
-          <div @click="todetail(hero.id)">
+        <el-col :span="6"  v-for="(hero,id) in top_heroes" :key="id">
+          <div @click="to_detail(hero.id)">
             <el-card class="box-card" >
               {{hero.name}}
             </el-card>
@@ -16,15 +16,13 @@
 <script>
 export default {
   name: 'Dashboard',
-  props:["listCmputed","title"],
+  props:["top_heroes","title"],
   data () {
-    return {
-      thisd:null
-    }
+    return {}
   },
   methods:{
-    todetail(id){
-      this.$emit("clicknamebox",id);
+    to_detail(id){
+      this.$emit("click_name_box",id);
     }
   }
 }

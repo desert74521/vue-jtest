@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HeroesEditView from '@/views/HeroesEditView'
-import HeroDetailview from '@/views/HeroDetailview'
+import HeroDetailView from '@/views/HeroDetailView'
 import DashboardView from '@/views/DashboardView'
 import MainView from '@/App'
 
@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path:"/detail/:id",
-      component:HeroDetailview
+      component:HeroDetailView
     }
   ]
 })

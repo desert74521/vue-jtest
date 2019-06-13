@@ -4,14 +4,14 @@
       <div class="input-width">
         <el-input placeholder="请输入内容" v-model="name">
           <template slot="prepend">name:</template>
-          <el-button slot="append" type="info" @click="addNewHero">add</el-button>
+          <el-button slot="append" type="info" @click="add_new_hero">add</el-button>
         </el-input>
       </div>
       <div class="text item margin-5px" v-for="(hero,index) in heroes" :key="index">
         <el-button-group>
           <el-button type="primary">{{hero.id}}</el-button>
-          <el-button class="width-fixed" type="default" icon="el-icon-edit" @click="todetail(hero.id)">{{hero.name}}</el-button>
-          <el-button type="warning" @click="removeHero(hero.id)">X</el-button>
+          <el-button class="width-fixed" type="default" icon="el-icon-edit" @click="to_detail(hero.id)">{{hero.name}}</el-button>
+          <el-button type="warning" @click="remove_hero(hero.id)">X</el-button>
         </el-button-group>
       </div>
   </div>
@@ -27,15 +27,15 @@ export default {
     }
   },
   methods:{
-    todetail(id){
-      this.$emit("clicknamebar",id);
+    to_detail(id){
+      this.$emit("click_name_bar",id);
     },
-    removeHero(id){
-      this.$emit("clickdeletebutton",id);
+    remove_hero(id){
+      this.$emit("click_delete_button",id);
     },
-    addNewHero(){
+    add_new_hero(){
       if(!this.name) return;
-      this.$emit("clickaddbutton",this.name);
+      this.$emit("click_add_button",this.name);
       this.name="";
     }
   }

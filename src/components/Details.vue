@@ -1,15 +1,15 @@
 <template>
-  <div class="heroes-box">
-    <div class="detail-title">{{thisname}} Details</div>
-    <span>id: {{hid}}</span>
+  <div>
+    <div class="detail-title">{{cur_hero_name}} Details</div>
+    <span>id: {{h_id}}</span>
     <div class="width-300px">
-      <el-input placeholder="请输入内容" v-model="thisname">
+      <el-input placeholder="请输入内容" v-model="cur_hero_name">
         <template slot="prepend">name：</template>
       </el-input>
     </div>
     <div class="routerlink-box">
-      <el-button type="primary" @click="goback">goback</el-button>
-      <el-button type="primary" @click="save">save</el-button>
+      <el-button type="primary" class="go-back-btn" @click="go_back">goback</el-button>
+      <el-button type="primary" class="save-btn" @click="save">save</el-button>
     </div>
   </div>
 </template>
@@ -17,19 +17,19 @@
 <script>
 export default {
   name: 'Detail',
-  props:["hid","hname"],
+  props:["h_id","h_name"],
   data () {
     return {
-      thisname: this.hname
+      cur_hero_name: this.h_name
     }
   },
   methods:{
-    goback(){
-      this.$emit("clickgobackbutton");
+    go_back(){
+      this.$emit("click_go_back_button");
     },
     save(){
-      if(!this.thisname) return;
-      this.$emit("clicksavebutton",this.thisname,this.hid);
+      if(!this.cur_hero_name) return;
+      this.$emit("click_save_button",this.cur_hero_name,this.h_id);
     }
   }
 }

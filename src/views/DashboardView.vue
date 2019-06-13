@@ -1,26 +1,24 @@
 <template>
   <div>
-      <dashboard title="Top Heroes" :listCmputed="listCmputed" @clicknamebox="toherodetail"></dashboard>
-      <searchinput @tosearch="tosearch"></searchinput>
+      <dashBoard title="Top Heroes" :top_heroes="top_heroes" @click_name_box="to_hero_detail"></dashBoard>
+      <searchInput @to_search="to_search"></searchInput>
   </div>
 </template>
 
 <script>
-import searchinput from "@/components/SearchInput"
-import dashboard from "@/components/Dashboard"
+import searchInput from "@/components/SearchInput"
+import dashBoard from "@/components/Dashboard"
 export default {
-  name: 'dashboardview',
+  name: 'DashboardView',
   data () {
-    return {
-      msg: null,
-    }
+    return {}
   },
   components:{
-    searchinput,
-    dashboard
+    searchInput,
+    dashBoard
   },
   computed:{
-    listCmputed:function(){
+    top_heroes:function(){
       if(this.$store.state.heroes.length>4){
           return this.$store.state.heroes.filter(function(item,i){
             return i<=3;
@@ -30,11 +28,13 @@ export default {
     }
   },
   methods:{
-    toherodetail(hid){
-      this.$router.push({path:"/detail/"+hid});
+    to_hero_detail(h_id){
+      this.$router.push({path:"/detail/"+h_id});
     },
-    tosearch(searchword){
-
+    to_search(search_word){
+      if(search_word){
+        this.$store.commit("PRINT_LOG","search hero "+search_word);
+      }
     }
   }
 }

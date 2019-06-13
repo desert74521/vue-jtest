@@ -1,23 +1,21 @@
 <template>
   <div>
-      <hdetails :hid="hid" :hname="hname" @clickgobackbutton="goback" @clicksavebutton="updatehero"></hdetails>
+      <hdetails :h_id="h_id" :h_name="h_name" @click_go_back_button="go_back" @click_save_button="update_hero"></hdetails>
   </div>
 </template>
 
 <script>
 import hdetails from "@/components/Details"
 export default {
-  name: 'heroedetailview',
+  name: 'HeroeDetailView',
   data () {
-    return {
-      msg: null,
-    }
+    return {}
   },
   computed:{
-    hid:function(){
+    h_id:function(){
       return this.$route.params.id;
     },
-    hname:function(){
+    h_name:function(){
       for(let i = 0 ; i < this.$store.state.heroes.length ; i++){
         if(this.$store.state.heroes[i].id == this.$route.params.id){
             return this.$store.state.heroes[i].name;
@@ -27,10 +25,10 @@ export default {
   },
   components:{hdetails},
   methods:{
-    goback(){
+    go_back(){
       this.$router.go(-1);
     },
-    updatehero(hname,hid){
+    update_hero(hname,hid){
       this.$store.commit("UPDATE_HERO",{id:hid,name:hname});
       this.$router.go(-1);
     }

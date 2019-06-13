@@ -21,8 +21,8 @@ const mutations = {
             }
         }
     },
-    PRINT_LOG(state,logstr){
-        state.logs.push("HeroService: "+logstr);
+    PRINT_LOG(state,logStr){
+        state.logs.push("HeroService: " + logStr);
     },
     CLS_LOG(state){
         state.logs.splice(0,state.logs.length);

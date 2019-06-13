@@ -2,23 +2,23 @@
   <div>
       <div class="search width-300px">
         <div class="search-title">Hero Search</div>
-        <el-input @blur="searchhero" v-model="searchword"/>
+        <el-input @blur="search_hero" v-model="search_word"/>
       </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'searchinput',
+  name: 'SearchInput',
   data(){
       return {
-          searchword:""
+          search_word:""
       }
   },
   methods:{
-    searchhero(){
-      if(this.searchword)
-      this.$emit("tosearch",this.searchword);
+    search_hero(){
+      if(this.search_word)
+      this.$emit("to_search",this.search_word);
     }
   }
 }

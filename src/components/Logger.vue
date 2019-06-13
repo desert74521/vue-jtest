@@ -1,7 +1,7 @@
 <template>
-  <div class="heroes-box">
+  <div>
       <div class="msg-class">Messages</div>
-      <el-button slot="append" type="info"  @click="clearlog"><span class="clear-button">clear log</span></el-button>
+      <el-button slot="append" type="info"  @click="clear_log"><span class="clear-button">clear log</span></el-button>
       <div v-for="(str,index) in logs" :key="index" class="text item">
         {{str}}
       </div>
@@ -13,8 +13,8 @@ export default {
   name: 'Logger',
   props:["logs"],
   methods:{
-    clearlog(){
-      this.$emit("clearbuttonclick");
+    clear_log(){
+      this.$emit("clear_button_click");
     }
   }
 }

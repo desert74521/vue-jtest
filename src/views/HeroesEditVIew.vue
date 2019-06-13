@@ -1,6 +1,6 @@
 <template>
   <div>
-      <heroes :heroes="heroes" @clicknamebar="detailhero" @clickaddbutton="addhero" @clickdeletebutton="delhero"></heroes>
+      <heroes :heroes="heroes" @click_name_bar="to_detail_hero" @click_add_button="add_hero" @clickdeletebutton="del_hero"></heroes>
   </div>
 </template>
 
@@ -10,9 +10,7 @@ export default {
   name: 'heroeseditview',
   components:{heroes},
   data () {
-    return {
-      heroedit: null,
-    }
+    return {}
   },
   computed:{
     heroes:function(){
@@ -20,16 +18,16 @@ export default {
     }
   },
   methods:{
-    addhero(hname){
+    add_hero(h_name){
       let id = this.$store.state.id;
-      this.$store.commit("ADD_HERO",{name:hname,id:id+1});
+      this.$store.commit("ADD_HERO",{name:h_name,id:id+1});
       this.$store.commit("UPDATE_ID",id+1);
     },
-    delhero(hid){
-      this.$store.commit("DEL_HERO",hid);
+    del_hero(h_id){
+      this.$store.commit("DEL_HERO",h_id);
     },
-    detailhero(hid){
-      this.$router.push({path:"/detail/"+hid});
+    to_detail_hero(h_id){
+      this.$router.push({path:"/detail/"+h_id});
     }
   }
 }

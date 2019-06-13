@@ -19,8 +19,8 @@ new Vue({
 })
 
 router.beforeEach((to, from, next) => {    
-  let pathstr = to.path;
-  let str = pathstr.split("/");
+  let path_str = to.path;
+  let str = path_str.split("/");
   store.commit("PRINT_LOG","fetched "+str[0]+(str[1]||"")+(str[2]?(" id="+str[2]):""));
   next();
 })
