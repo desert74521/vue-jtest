@@ -11,9 +11,14 @@ describe('HeroesEditView.vue面向功能测试', () => {
     let $route;
     let mutations;
     let store;
+    let clearLogMethod;
     beforeEach(() => {
+        clearLogMethod = jest.fn();
         mutations = {
-            CLS_LOG: jest.fn()
+            CLS_LOG: function(state){
+                state.logs = [];
+                clearLogMethod();
+            }
         }
         store = new Vuex.Store({
             state: {
@@ -23,10 +28,7 @@ describe('HeroesEditView.vue面向功能测试', () => {
             },
             mutations
         })
-        $router = {
-            go:jest.fn(),
-            push:jest.fn()
-        }
+        $router = []
         $route = {
             params:{
                 id:1
@@ -42,5 +44,29 @@ describe('HeroesEditView.vue面向功能测试', () => {
             stubs: ['router-link', 'router-view']
         })
         expect(wrapper.contains('div')).toBe(true)
+    })
+
+    it('HeroesEditView的methods方法测试 --clear_log', () => {
+        const wrapper = shallowMount(App,{
+            store, 
+            localVue,
+            mocks: { $router, $route},
+            stubs: ['router-link', 'router-view']
+        })
+        wrapper.vm.clear_log.call(wrapper.vm);
+        expect(clearLogMethod).toBeCalled();
+        expect(wrapper.vm.$store.state.logs.length).toBe(0);
+    })
+
+    it('HeroesEditView的methods方法测试 --link_to', () => {
+        const wrapper = shallowMount(App,{
+            store, 
+            localVue,
+            mocks: { $router, $route},
+            stubs: ['router-link', 'router-view']
+        })
+        wrapper.vm.link_to.call(wrapper.vm,"/target_path");
+        expect(wrapper.vm.$router.length).toBe(1);
+        expect(wrapper.vm.$router[0].path).toBe("/target_path");
     })
 })

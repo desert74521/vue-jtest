@@ -44,4 +44,35 @@ describe('HeroesEditView.vue面向功能测试', () => {
         })
         expect(wrapper.contains('div')).toBe(true)
     })
+
+    it('HeroesEditView的methods方法测试  --add_hero', () => {
+        const wrapper = shallowMount(HeroesEditView,{
+            store, 
+            localVue,
+            mocks: { $router, $route}
+        })
+        wrapper.vm.add_hero.call(wrapper.vm,"new_hero")
+        expect(mutations.ADD_HERO).toBeCalled();
+        expect(mutations.UPDATE_ID).toBeCalled();
+    })
+
+    it('HeroesEditView的methods方法测试  --del_hero', () => {
+        const wrapper = shallowMount(HeroesEditView,{
+            store, 
+            localVue,
+            mocks: { $router, $route}
+        })
+        wrapper.vm.del_hero.call(wrapper.vm,1)
+        expect(mutations.DEL_HERO).toBeCalled();
+    })
+
+    it('HeroesEditView的methods方法测试  --to_detail_hero', () => {
+        const wrapper = shallowMount(HeroesEditView,{
+            store, 
+            localVue,
+            mocks: { $router, $route}
+        })
+        wrapper.vm.to_detail_hero.call(wrapper.vm,1)
+        expect($router.push).toBeCalled();
+    })
 })

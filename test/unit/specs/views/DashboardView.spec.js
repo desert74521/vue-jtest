@@ -108,7 +108,7 @@ describe('DashboardView.vue面向计算属性测试', () => {
             localVue
         })
         let arr = wrapper.vm.top_heroes;
-        //结果数组长度为0
+        //结果数组长度为4
         expect(arr.length).toBe(4);
     })
 
