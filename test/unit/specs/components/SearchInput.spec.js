@@ -23,7 +23,7 @@ describe('SearchInput.vue面向功能测试', () => {
 describe('SearchInput.vue面向细节方法测试', () => {
   //组件是否能响应事件
   it('SearchInput组件中Method方法的测试--search_hero', () => {
-    //case输入框值为空时
+    //case输入框值不为空时
     const wrapper = mount(SearchInput)
     wrapper.setData({search_word:"3434"})
     wrapper.vm.search_hero.call(wrapper.vm);
@@ -38,7 +38,7 @@ describe('SearchInput.vue面向细节方法测试', () => {
     const wrapper2 = mount(SearchInput)
     wrapper2.setData({search_word:""})
     wrapper2.vm.search_hero.call(wrapper2.vm);
-    //方法中的事件被触发
+    //方法中的事件不被触发
     expect(wrapper2.emitted().to_search).toBe(undefined)
   })
 })
