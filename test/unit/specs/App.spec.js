@@ -6,7 +6,7 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 
 
-describe('HeroesEditView.vue面向功能测试', () => {
+describe('App.vue面向功能测试', () => {
     let $router;
     let $route;
     let mutations;
@@ -36,7 +36,7 @@ describe('HeroesEditView.vue面向功能测试', () => {
         }
     })
 
-    it('HeroesEditView是否能正常渲染', () => {
+    it('App是否能正常渲染', () => {
         const wrapper = shallowMount(App,{
             store, 
             localVue,
@@ -46,7 +46,7 @@ describe('HeroesEditView.vue面向功能测试', () => {
         expect(wrapper.contains('div')).toBe(true)
     })
 
-    it('HeroesEditView的methods方法测试 --clear_log', () => {
+    it('App的methods方法测试 --clear_log', () => {
         const wrapper = shallowMount(App,{
             store, 
             localVue,
@@ -58,7 +58,7 @@ describe('HeroesEditView.vue面向功能测试', () => {
         expect(wrapper.vm.$store.state.logs.length).toBe(0);
     })
 
-    it('HeroesEditView的methods方法测试 --link_to', () => {
+    it('App的methods方法测试 --link_to', () => {
         const wrapper = shallowMount(App,{
             store, 
             localVue,
