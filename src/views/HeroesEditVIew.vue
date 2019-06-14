@@ -1,6 +1,6 @@
 <template>
   <div>
-      <heroes :heroes="heroes" @click_name_bar="to_detail_hero" @click_add_button="add_hero" @clickdeletebutton="del_hero"></heroes>
+      <heroes :heroes="heroes" @click_name_bar="to_detail_hero" @click_add_button="add_hero" @click_delete_button="del_hero"></heroes>
   </div>
 </template>
 
